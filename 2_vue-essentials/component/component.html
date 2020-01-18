@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- #app -->
+      <h1>컴포넌트 배우기</h1>
+      <!-- <app-header v-bind:프롭스 속성이름 ="상위 컴포넌트의 데이터 이름"></app-header> -->
+      <app-header v-bind:propsdata="title"></app-header>
+      <!-- <app-contents v-on:하위 컴포넌트의 이벤트이름="상위 컴포넌트의 메서드 이름"></app-contents> -->
+      <app-contents v-on:change="changeTitle"></app-contents>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+      //Vue.component('컴포넌트 이름', 컴포넌트 내용)
+      Vue.component("app-contents", {
+        template: `
+            <main>
+                전역 컴포넌트
+                <button v-on:click="sendEvent">변경</button>
+                </main>`,
+        methods: {
+          sendEvent: function() {
+            this.$emit("change"); //아래서 위로 올릴 때 $emit 사용 - 1단계 통신(바로 쏨)
+          }
+        }
+      });
+
+      new Vue({
+        el: "#app",
+        data: {
+          title: "넘겨줄게"
+        },
+        components: {
+          // '컴포넌트 이름' : '컴포넌트 내용'
+          "app-header": {
+            template: "<h1> {{propsdata}} </h1>",
+            props: ["propsdata"]
+          }
+        },
+        methods: {
+          changeTitle: function() {
+            this.title = "받았다";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
