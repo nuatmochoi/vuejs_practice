@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .blue {
+        color: blue;
+      }
+      .red {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- #app -->
+      <h1>데이터 바인딩</h1>
+      <p>{{ msg + ' Vue !!' }}</p>
+      <!--<p>{{ productList }}</p>-->
+      <p>{{ greetingMessage }}</p>
+      <h1>디렉티브</h1>
+      <p id="100">v-bind</p>
+      <p v-bind:id="num">v-bind</p>
+      <button v-on:click="greet">say hi</button>
+      <hr />
+      <h1>디렉티브 실습</h1>
+      <button v-on:click="toggle">색깔 바꾸기</button>
+      <p v-bind:class="textClass">이 색깔이 바뀝니다.</p>
+      <p v-if="login">로그인이 되었습니다.</p>
+      <!-- @click -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        methods: {
+          greet: () => {
+            console.log("hi");
+          },
+          toggle: function() {
+            this.textClass = "red";
+          }
+        },
+        data: {
+          msg: "hello",
+          textClass: "blue",
+          num: 100,
+          login: false
+        },
+        computed: {
+          // computed는 임의로 바꿀 수 없음, but, data와 연결시켜서 웹상에서 바꿀 수 있음
+          greetingMessage() {
+            return this.msg + " Vue !";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
