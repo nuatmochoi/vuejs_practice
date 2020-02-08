@@ -1,9 +1,9 @@
 <template>
-	<div>
-		<input type="text" v-model="inputText" />
-		<!-- <input type="text" v-on:input="changeText" v-bind:value="inputText" /> -->
-		<button v-on:click="addItem">add</button>
-	</div>
+  <div>
+    <input type="text" v-model="inputText" />
+    <!-- <input type="text" v-on:input="changeText" v-bind:value="inputText" /> -->
+    <button v-on:click="addItem">add</button>
+  </div>
 </template>
 
 <script>
@@ -19,7 +19,8 @@ export default {
 	methods: {
 		addItem: function() {
 			var value = this.inputText; // trim?
-			localStorage.setItem(value, value);
+			//localStorage.setItem(value, value);
+			this.$emit('add-todo', value); // 동작: 대상
 			this.clearInput();
 		},
 		clearInput: function() {
