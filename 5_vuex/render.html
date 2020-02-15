@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app">
+			<!--<p>{{ str }}</p>-->
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script>
+			// 1. created, 데이터 초기화(반응성-reactivity 주입)
+			// 2. beforeMout, 'template' 속성을 render 함수로 변환
+			new Vue({
+				el: '#app',
+				data: {
+					str: 'hi',
+				},
+				//template: ' <p>{{ str }}</p>',
+				render: function(createElement) {
+					//return createElement('태그 이름','태그 속성값', '하위 태그 정보')
+					return createElement('p', this.str); //reactivity를 반영
+				},
+			});
+		</script>
+	</body>
+</html>
