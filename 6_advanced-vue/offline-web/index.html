@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline Web</title>
+</head>
+<body>
+    <h1>오프라인 웹</h1>
+    <img src="./teemo.png" alt="teemo">
+
+    <script src="./app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator){ 
+            navigator.serviceWorker.register('sw.js') // api를 이용해 sw로 구분해서 등록 
+            .then(function(swReg) {
+                console.log(swReg);
+            })
+            .catch(function(error){
+                console.log(error);
+            });
+        }
+    </script>
+</body>
+</html>

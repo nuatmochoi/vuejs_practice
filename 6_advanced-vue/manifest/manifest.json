@@ -1,0 +1,13 @@
+{
+    "name": "manifest-demo",
+    "short_name": "manifest sth",
+    "icons" : [
+        {
+            "src": "teemo.png",
+            "type": "image/png",
+            "sizes": "144x144"
+        }
+    ],
+    "theme_color": "#24292e",
+    "display": "standalone"
+}
